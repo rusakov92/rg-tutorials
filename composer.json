@@ -1,0 +1,21 @@
+{
+  "name": "rusakov92/rg-tutorials",
+  "description": "T",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "aleksandar.rusakov",
+      "email": "aleksandarrusakov@gmail.com"
+    }
+  ],
+  "require": {
+    "php": "^7.4",
+    "ext-pdo": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "RGTutorials\\": "./"
+    }
+  }
+}
