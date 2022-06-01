@@ -8,11 +8,10 @@ require_once __DIR__.'/../vendor/autoload.php';
 
 $tutorial = new \RGTutorials\Generators\GeneratorTutorial();
 
-$test = $tutorial->simpleExample();
+// $test = $tutorial->simpleExample();
 // $test = $tutorial->keyValuePairExample();
 // $test = $tutorial->nullExample();
 // $test = $tutorial->referenceExample();
-// $test = $tutorial->delegationExample();
 // $test = $tutorial->delegationExample();
 // $test = $tutorial->delegationWithConflictingKeysExample();
 // $test = $tutorial->returnInGeneratorExample();
@@ -24,5 +23,4 @@ $test = $tutorial->databaseGenerator();
 foreach ($test as $index => $item) {
     // var_dump($index);
     var_dump($item);
-
 }

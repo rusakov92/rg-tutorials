@@ -4,6 +4,7 @@ namespace RGTutorials\Generators;
 
 use Generator;
 use PDO;
+use stdClass;
 
 /**
  * Overview @link https://www.php.net/manual/en/language.generators.overview.php
@@ -16,6 +17,8 @@ class GeneratorTutorial
         $value = 'data';
 
         yield $value;
+        yield 2;
+        yield 'asd';
     }
 
     public function keyValuePairExample(): Generator
@@ -41,13 +44,10 @@ class GeneratorTutorial
 
     public function &referenceExample(): Generator
     {
-        $one = 1;
-        $two = 2;
-        $three = 3;
+        $obj = new stdClass();
+        $obj->one = 1;
 
-        yield $one;
-        yield $two;
-        yield $three;
+        yield $obj;
     }
 
     /**
@@ -55,12 +55,12 @@ class GeneratorTutorial
      */
     public function delegationExample(): Generator
     {
-        yield from $this->innerGenerator();
+        yield $this->innerGenerator();
     }
 
     public function delegationWithConflictingKeysExample(): Generator
     {
-        yield 0;
+        yield 0; // key 0;
         yield from $this->innerGenerator();
     }
 
@@ -73,9 +73,14 @@ class GeneratorTutorial
 
     public function whatIfExample1()
     {
-        return 1;
+        for ($i = 0; $i < 4; ++$i) {
+            if ($i > 1) {
+                yield 200;
 
-        yield 1;
+                return;
+            }
+            yield $i;
+        }
     }
 
     public function whatIfExample2(): Generator
@@ -102,6 +107,7 @@ class GeneratorTutorial
 
     private function innerGenerator(): Generator
     {
-        yield 1;
+        yield 1; // key 0
+        yield 2; // key 1
     }
 }
